@@ -1,8 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import numpy as np
-from numpy import asarray
-from numpy import savetxt
+import pandas as pd
 
 def all_atp_ranked_players():
     url = 'https://www.atptour.com/en/rankings/singles?RankRange=0-5000'
@@ -18,14 +17,16 @@ def all_atp_ranked_players():
             li = ul.find('li', {'class':'name center'})
             a = li.find('a')
             span = a.find('span')
-            names.append({'name': span.text, 'rank': rank})
+            span = span.text
+            span = span.replace(' ', '')
+            span = span.replace('-', '')
+            span = span.replace('.','')
+            names.append((rank, span))
             rank += 1
             
     return names
 
-def write_players_to_csv(players):
-    for player in players:
-        print(player)
-
-players = all_atp_ranked_players()
-write_players_to_csv(players)
+players = np.array(all_atp_ranked_players())
+df = pd.DataFrame(players)
+df.columns = ['rank', 'name']
+df.to_csv("./data/AtpRankedPlayersNames.csv", index=False)
