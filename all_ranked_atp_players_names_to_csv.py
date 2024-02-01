@@ -26,7 +26,13 @@ def all_atp_ranked_players():
             
     return names
 
-players = np.array(all_atp_ranked_players())
-df = pd.DataFrame(players)
-df.columns = ['rank', 'name']
-df.to_csv("./data/AtpRankedPlayersNames.csv", index=False)
+def main():
+    players = np.array(all_atp_ranked_players())
+    df = pd.DataFrame(players)
+    df.columns = ['rank', 'name']
+    df.to_csv("./data/AtpRankedPlayersNames.csv", index=False)
+
+
+if __name__ == "__main__":
+    print('main ran')
+    main()
