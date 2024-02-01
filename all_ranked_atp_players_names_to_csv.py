@@ -10,6 +10,7 @@ def all_atp_ranked_players():
 
     names = []
     rank = 1
+    # iterate through and go down hierarchy of html to grab all players names and put it into an array
     htmltable = soup.find('table', { 'class' : 'mega-table desktop-table' })
     for tr in htmltable.findAll('tr'):
         for td in tr.findAll('td', {'class':'player bold heavy'}):
