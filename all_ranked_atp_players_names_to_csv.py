@@ -24,6 +24,9 @@ def all_atp_ranked_players():
             span = span.replace('.','')
             names.append((rank, span))
             rank += 1
+        # change the condition to select how many players you want
+        if rank >= 5000:
+            break
             
     return names
 
