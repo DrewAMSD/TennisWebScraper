@@ -37,6 +37,7 @@ def pull_player_matches(url, name):
         player_matches.append(mtch)
     return player_matches
 
+
 def main():
     # read csv file and create an array of all players names
     df = pd.read_csv('./data/AtpRankedPlayersNames.csv')
