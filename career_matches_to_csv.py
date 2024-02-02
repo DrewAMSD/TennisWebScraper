@@ -30,6 +30,7 @@ def pull_all_matches(url1, url2, name):
     results_table = soup.find('table', {'id': 'matches'})
     if results_table == None: return ['None']
     tbody = results_table.find('tbody')
+    if tbody == None: return ['None']
     player_matches = []
     for tr in tbody.find_all('tr'):
         mtch = []
